@@ -12,3 +12,9 @@ Core competencies include:
 • Common software and hardware packages including: FrameMaker, RoboHelp, Acrobat, Illustrator, Lotus Notes, Outlook, Windows Mail, SnagIt, Word, and Windows.
 
 Specialties: technical writing (hardware and software); copywriting; datasheets; runbooks; brochure copy; press releases; articles; white papers; editing; web writing; marcom writing; FrameMaker; Confluence; Illustrator; Word; Acrobat; RoboHelp.
+
+
+##Contact Me
+I would like to discuss how I can contribute to your team or project. Please contact me on [LinkedIn](https://www.linkedin.com/in/sarahgelbergchan/).
+
+Thank you for visiting my portfolio!
