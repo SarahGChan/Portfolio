@@ -1,0 +1,273 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Visa Supplier Matching Service API",
+    "version": "1.0.0",
+    "description": "The Visa Supplier Matching Service API allows clients to match supplier records to known Visa merchants. This service helps improve supplier enrichment, merchant classification, and reporting accuracy.\n\nThe API supports both real-time supplier matching and bulk file-based matching workflows."
+  },
+  "servers": [
+    {
+      "url": "https://sandbox.api.visa.com",
+      "description": "Visa Sandbox Environment"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Supplier Matching",
+      "description": "Real-time supplier-to-merchant matching."
+    },
+    {
+      "name": "Supplier Matching (Bulk)",
+      "description": "Bulk supplier matching using file upload and download."
+    }
+  ],
+  "paths": {
+    "/visasuppliermatchingservice/v1/search": {
+      "post": {
+        "tags": ["Supplier Matching"],
+        "summary": "Match a supplier to a Visa merchant",
+        "description": "Matches a supplier record to a Visa merchant using identifying information such as name, address, and country code.",
+        "operationId": "matchSupplier",
+        "parameters": [
+          {
+            "name": "supplierName",
+            "in": "query",
+            "description": "Legal or trade name of the supplier.",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "supplierStreetAddress",
+            "in": "query",
+            "description": "Street address of the supplier.",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "supplierCity",
+            "in": "query",
+            "description": "City of the supplier.",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "supplierState",
+            "in": "query",
+            "description": "State or province of the supplier.",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "supplierPostalCode",
+            "in": "query",
+            "description": "Postal code of the supplier.",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "supplierCountryCode",
+            "in": "query",
+            "description": "ISO country code of the supplier.",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "supplierPhoneNumber",
+            "in": "query",
+            "description": "Phone number of the supplier.",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "supplierTaxId",
+            "in": "query",
+            "description": "Tax identifier of the supplier.",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Supplier match result returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": { "type": "string" },
+                        "statusDescription": { "type": "string" }
+                      }
+                    },
+                    "matchStatus": { "type": "string" },
+                    "matchConfidence": { "type": "string" },
+                    "matchDetails": {
+                      "type": "object",
+                      "properties": {
+                        "mcc": { "type": "string" },
+                        "l2": { "type": "string" },
+                        "l3s": { "type": "string" },
+                        "l3li": { "type": "string" },
+                        "fleetInd": { "type": "string" }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "successfulMatch": {
+                    "summary": "Successful supplier match",
+                    "value": {
+                      "matchConfidence": "High",
+                      "matchStatus": "Yes",
+                      "matchDetails": {
+                        "mcc": "3501",
+                        "l2": "",
+                        "l3s": "",
+                        "l3li": "",
+                        "fleetInd": ""
+                      },
+                      "status": {
+                        "statusCode": "SMSAPI000",
+                        "statusDescription": "Request successfully received"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-hideTryIt": true
+      }
+    },
+    "/visasuppliermatchingservice/v1/upload": {
+      "post": {
+        "tags": ["Supplier Matching (Bulk)"],
+        "summary": "Upload bulk supplier matching file",
+        "description": "Uploads a bulk supplier file for asynchronous matching.",
+        "operationId": "uploadBulkSupplierFile",
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "Default country code applied to records in the file.",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Bulk file accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fileId": { "type": "integer", "format": "int32" },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": { "type": "string" },
+                        "statusDescription": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-hideTryIt": true
+      }
+    },
+    "/visasuppliermatchingservice/v1/status": {
+      "get": {
+        "tags": ["Supplier Matching (Bulk)"],
+        "summary": "Check bulk file processing status",
+        "description": "Returns the processing status of a previously uploaded bulk supplier file.",
+        "operationId": "getBulkFileStatus",
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "Identifier returned at upload time.",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bulk file status returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fileId": { "type": "integer" },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "statusCode": { "type": "string" },
+                        "statusDescription": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-hideTryIt": true
+      }
+    },
+    "/visasuppliermatchingservice/v1/download": {
+      "get": {
+        "tags": ["Supplier Matching (Bulk)"],
+        "summary": "Download bulk matching results",
+        "description": "Downloads the results of a completed bulk supplier matching request.",
+        "operationId": "downloadBulkResults",
+        "parameters": [
+          {
+            "name": "inputFileId",
+            "in": "query",
+            "description": "Identifier of the uploaded bulk file.",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bulk match results returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "byteArray": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  }
+                },
+                "examples": {
+                  "results": {
+                    "summary": "CSV-style bulk results",
+                    "value": {
+                      "byteArray": [
+                        "1,Supplier 1,123 Main St,Boston,MA,12345,840",
+                        "2,Supplier 2,456 Green Ave,San Francisco,CA,98765,840"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-hideTryIt": true
+      }
+    }
+  }
+}
