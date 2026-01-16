@@ -13,12 +13,14 @@ Core competencies include:
 
 Specialties: technical writing (hardware and software); copywriting; datasheets; runbooks; brochure copy; press releases; articles; white papers; editing; web writing; marcom writing; FrameMaker; Confluence; Illustrator; Word; Acrobat; RoboHelp.
 
-## Work Sample
+## Work Samples
 
 Here's a rewrite of an existing public-facing Visa API reference.
 https://editor.swagger.io/?url=https://raw.githubusercontent.com/SarahGChan/Portfolio/main/VisaAPISupplierMatchingSvcREV.json
 Original here: URL TBD
 
+Here's a user guide I wrote while at Wells Fargo. 
+https://github.com/SarahGChan/Portfolio/blob/main/cd_presentment_rpt_ug.pdf
 
 ## Contact Me
 I would like to discuss how I can contribute to your team or project. Please contact me on [LinkedIn](https://www.linkedin.com/in/sarahgelbergchan/).
