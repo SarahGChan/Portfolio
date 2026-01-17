@@ -22,6 +22,9 @@ Original here: URL TBD
 Here's a user guide I wrote while at Wells Fargo. 
 https://github.com/SarahGChan/Portfolio/blob/main/cd_presentment_rpt_ug.pdf
 
+Here's an internal document I wrote while at Workday.
+https://github.com/SarahGChan/Portfolio/blob/main/MediaDisposalProcedure_REDACTED.docx.pdf
+
 ## Contact Me
 I would like to discuss how I can contribute to your team or project. Please contact me on [LinkedIn](https://www.linkedin.com/in/sarahgelbergchan/).
 
