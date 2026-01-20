@@ -16,8 +16,8 @@ Specialties: technical writing (hardware and software); copywriting; datasheets;
 ## Work Samples
 
 Here's a rewrite of an existing public-facing Visa API reference.
-https://editor.swagger.io/?url=https://raw.githubusercontent.com/SarahGChan/Portfolio/main/VisaAPISupplierMatchingSvcREV.json
-Original here: URL TBD
+https://raw.githubusercontent.com/SarahGChan/Portfolio/main/VisaAPISupplierMatchingSvcREV.json
+Original here: https://developer.visa.com/capabilities/suppliermatchingservice/reference#tag/Visa-Supplier-Matching-Service-API/operation/Match%20suppliers%20to%20Visa%20merchants_v1%20-%20Latest
 
 Here's a user guide I wrote while at Wells Fargo. 
 https://github.com/SarahGChan/Portfolio/blob/main/cd_presentment_rpt_ug.pdf
