@@ -20,6 +20,11 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/SarahGChan/Port
 
 Original here: https://developer.visa.com/capabilities/suppliermatchingservice/reference#tag/Visa-Supplier-Matching-Service-API/operation/Match%20suppliers%20to%20Visa%20merchants_v1%20-%20Latest
 
+Here's another rewrite of an existing public-facing Visa API reference.
+https://editor.swagger.io/?url=https://raw.githubusercontent.com/SarahGChan/Portfolio/main/Visa_payment-account-validation-openapi-consumerREV.json
+
+Original here: TBD
+
 Here's a user guide I wrote while at Wells Fargo. 
 https://github.com/SarahGChan/Portfolio/blob/main/cd_presentment_rpt_ug.pdf
 
