@@ -1,0 +1,199 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Payment Account Validation API",
+    "version": "1.1.0",
+    "description": "The Payment Account Validation API allows merchants, platforms, and payment service providers to validate a card or payment account **before** attempting an authorization or transaction.\n\nTypical use cases include:\n- Pre-transaction card validation\n- Reducing failed authorizations\n- Improving customer checkout experiences\n\nThis API does **not** perform a financial authorization or place funds on hold.",
+    "termsOfService": "https://developer.visa.com/terms",
+    "contact": {
+      "name": "Visa Developer Platform",
+      "url": "https://developer.visa.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.visa.com",
+      "description": "Production environment"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Card Validation",
+      "description": "Operations related to validating payment card information."
+    }
+  ],
+  "paths": {
+    "/card-validation/v1": {
+      "post": {
+        "tags": [
+          "Card Validation"
+        ],
+        "summary": "Validate a payment card",
+        "description": "Runs validation checks against a payment account to determine whether it is likely to succeed in downstream processing.\n\nThis endpoint is commonly called during checkout **before** submitting a payment authorization.",
+        "operationId": "validateCard",
+        "requestBody": {
+          "required": true,
+          "description": "Card and optional address information to be validated.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardValidationRequest"
+              },
+              "examples": {
+                "basicValidation": {
+                  "summary": "Basic card validation",
+                  "value": {
+                    "acquirerCountryCode": "840",
+                    "acquiringBin": "412345",
+                    "primaryAccountNumber": "4111111111111111"
+                  }
+                },
+                "validationWithAddress": {
+                  "summary": "Card validation with address verification",
+                  "value": {
+                    "acquirerCountryCode": "840",
+                    "acquiringBin": "412345",
+                    "primaryAccountNumber": "4111111111111111",
+                    "addressVerificationResults": {
+                      "postalCode": "94105",
+                      "street": "123 Market Street"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Validation completed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardValidationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request was invalid or missing required fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed or credentials were missing"
+          },
+          "500": {
+            "description": "An unexpected error occurred on the server"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CardValidationRequest": {
+        "type": "object",
+        "description": "Request payload containing the payment account information to be validated. Only basic card details are required; additional fields can be provided to perform more thorough checks.",
+        "required": [
+          "acquirerCountryCode",
+          "acquiringBin",
+          "primaryAccountNumber"
+        ],
+        "properties": {
+          "acquirerCountryCode": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "description": "ISO 3166-1 numeric country code identifying the country of the acquiring bank.\n\nExample: `840` for the United States.",
+            "example": "840"
+          },
+          "acquiringBin": {
+            "type": "string",
+            "minLength": 6,
+            "maxLength": 11,
+            "description": "Bank Identification Number (BIN) assigned to the acquirer for clearing and settlement.",
+            "example": "412345"
+          },
+          "primaryAccountNumber": {
+            "type": "string",
+            "minLength": 13,
+            "maxLength": 19,
+            "description": "The Primary Account Number (PAN) printed on the card.\n\nDo not log or store PAN values unless you are PCI-DSS compliant.",
+            "example": "4111111111111111"
+          },
+          "accountType": {
+            "type": "string",
+            "description": "Identifies the type of account associated with the PAN.\n\nIf omitted, the default value `00` is assumed.",
+            "enum": [
+              "00",
+              "10",
+              "20",
+              "30",
+              "40"
+            ],
+            "example": "30"
+          },
+          "addressVerificationResults": {
+            "type": "object",
+            "description": "Optional address information supplied by the cardholder. Including this object enables address verification checks.",
+            "required": [
+              "postalCode"
+            ],
+            "properties": {
+              "postalCode": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 9,
+                "description": "Postal or ZIP code provided by the cardholder.",
+                "example": "94105"
+              },
+              "street": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "description": "Street address provided by the cardholder.",
+                "example": "123 Market Street"
+              }
+            }
+          }
+        }
+      },
+      "CardValidationResponse": {
+        "type": "object",
+        "description": "Response returned after validation processing is complete.",
+        "properties": {
+          "validationStatus": {
+            "type": "string",
+            "description": "Overall validation result for the payment account.",
+            "example": "VALID"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable summary of the validation outcome.",
+            "example": "The payment account passed validation checks."
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "description": "Standard error response format.",
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "example": "INVALID_REQUEST"
+          },
+          "errorMessage": {
+            "type": "string",
+            "example": "The acquiringBin field is required."
+          }
+        }
+      }
+    }
+  }
+}
