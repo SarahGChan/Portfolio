@@ -1,6 +1,6 @@
-#Overview
+# Overview
 
-##What TinyLlama Is
+## What TinyLlama Is
 
 TinyLlama is an open-source, LLaMA-compatible language model designed to make local inference practical on modest hardware. It is much smaller than most modern AI models, but it is built to work the same way as LLaMA. TinyLlama has about 1.1 billion parameters. Its small size makes it useful for testing ideas, running AI on your own computer, and working in situations where power, memory, or cost are limited.
 
@@ -11,7 +11,7 @@ TinyLlama runs fully on your own system instead of on outside servers. This lets
 This guide explains how to use TinyLlama to run the model and connect it to applications. It does not cover training the model or doing advanced AI research.
 
 
-##Intended Use Cases
+## Intended Use Cases
 
 TinyLlama is well suited for:
 
@@ -28,7 +28,7 @@ TinyLlama is well suited for:
 TinyLlama's small size enables developers to run inference on relatively modest hardware.
 
 
-##What TinyLlama Is Not Designed For
+## What TinyLlama Is Not Designed For
 
 TinyLlama is not meant to replace large, production-grade language models. In particular, it is not suitable for:
 
@@ -45,7 +45,7 @@ TinyLlama is not meant to replace large, production-grade language models. In pa
 TinyLlama may generate incorrect, misleading, or nonsensical responses. Its smaller scale amplifies these limitations.
 
 
-##TinyLlama Compared to Hosted LLM APIs
+## TinyLlama Compared to Hosted LLM APIs
 
 Hosted LLM services (such as commercial API-based models) typically offer:
 
