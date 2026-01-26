@@ -1,0 +1,72 @@
+#Overview
+
+##What TinyLlama Is
+
+TinyLlama is an open-source, LLaMA-compatible language model designed to make local inference practical on modest hardware. It is much smaller than most modern AI models, but it is built to work the same way as LLaMA. TinyLlama has about 1.1 billion parameters. Its small size makes it useful for testing ideas, running AI on your own computer, and working in situations where power, memory, or cost are limited.
+
+TinyLlama is most useful when the primary goal is understanding or prototyping language-model behavior rather than achieving maximum output quality.
+
+TinyLlama runs fully on your own system instead of on outside servers. This lets developers see exactly how the model works from start to finish. It also makes it easier to try out AI features without relying on online services, and to decide whether running AI locally will work for a project.
+
+This guide explains how to use TinyLlama to run the model and connect it to applications. It does not cover training the model or doing advanced AI research.
+
+
+##Intended Use Cases
+
+TinyLlama is well suited for:
+
+- Prototyping language-model integrations in offline environments
+
+- Exploring prompt design and output behavior without having to pay for APIs
+
+- Building developer tools or internal utilities that require basic text generation
+
+- Evaluating the tradeoffs between local and hosted LLMs
+
+- Educational and experimental use where transparency and control are important
+
+TinyLlama's small size enables developers to run inference on relatively modest hardware.
+
+
+##What TinyLlama Is Not Designed For
+
+TinyLlama is not meant to replace large, production-grade language models. In particular, it is not suitable for:
+
+- Tasks that require high-accuracy natural language
+
+- Complex reasoning or multi-step problem solving
+
+- Applications requiring strong factual reliability
+
+- User-facing systems without additional validation and guardrails
+
+- Production workloads that demand consistent, high-quality output
+
+TinyLlama may generate incorrect, misleading, or nonsensical responses. Its smaller scale amplifies these limitations.
+
+
+##TinyLlama Compared to Hosted LLM APIs
+
+Hosted LLM services (such as commercial API-based models) typically offer:
+
+- Larger models with higher output quality
+
+- Managed infrastructure and scaling
+
+- Ongoing model improvements
+
+- Built-in safety and monitoring features
+
+TinyLlama, by contrast, offers:
+
+- Full local control over execution
+
+- No per-request usage costs
+
+- Predictable deployment characteristics
+
+- Transparency into runtime behavior
+
+Choosing TinyLlama is primarily a tradeoff: control and locality versus capability and convenience.
+
+This documentation is an independent developer guide based on the archived TinyLlama project. It is intended to demonstrate how a small open-source language model can be documented for practical use by developers and systems integrators.
