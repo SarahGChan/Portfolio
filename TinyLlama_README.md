@@ -318,5 +318,6 @@ TinyLlama is built on the work of:
 
 ---
 
-**Last Updated**: January 2026  
-**Maintained by**: The TinyLlama Community
+## About This Documentation
+
+This documentation is part of an independent developer guide based on the archived TinyLlama project. It is intended to demonstrate how a small open-source language model can be documented for practical use by developers and systems integrators.
