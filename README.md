@@ -25,6 +25,9 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/SarahGChan/Port
 
 Original here: TBD
 
+Here's an overview I wrote for TinyLlama, an open-source AI project. 
+https://github.com/SarahGChan/Portfolio/blob/main/TinyLlama_overview.md
+
 Here's a user guide I wrote while at Wells Fargo. 
 https://github.com/SarahGChan/Portfolio/blob/main/cd_presentment_rpt_ug.pdf
 
