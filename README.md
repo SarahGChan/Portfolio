@@ -25,6 +25,11 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/SarahGChan/Port
 
 Original here: TBD
 
+Here's a rewrite of a small existing API readme.  
+https://github.com/SarahGChan/Portfolio/blob/main/TextStat-README-improved.md
+
+Original here: https://github.com/textstat/textstat/blob/main/README.md
+
 Here's an overview I wrote for TinyLlama, an open-source AI project. 
 https://github.com/SarahGChan/Portfolio/blob/main/TinyLlama_overview.md
 
