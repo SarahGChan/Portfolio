@@ -33,6 +33,9 @@ Original here: https://github.com/textstat/textstat/blob/main/README.md
 Here's an overview I wrote for TinyLlama, an open-source AI project. 
 https://github.com/SarahGChan/Portfolio/blob/main/TinyLlama_overview.md
 
+Here's a short explainer doc I wrote about what an API endpoint is.
+https://github.com/SarahGChan/Portfolio/blob/main/What_Is_an_API_Endpoint.md
+
 Here's a user guide I wrote while at Wells Fargo. 
 https://github.com/SarahGChan/Portfolio/blob/main/cd_presentment_rpt_ug.pdf
 
